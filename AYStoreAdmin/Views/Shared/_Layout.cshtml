@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - AY Store Admin</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/AYStoreAdmin.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-primary"
+             aria-label="AY Store navigation header">
+            <div class="container-xl">
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                    <img src="images/ay_shop.png" width="151" height="47" class="d-inline-block align-top mb-2 mt-1"
+                         alt="AY Store Logo">
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle"
+                               data-toggle="dropdown"
+                               href="#"
+                               role="button"
+                               data-bs-toggle="dropdown"
+                               id="nav-dropdown"
+                               aria-expanded="false">
+                                Products
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="nav-dropdown">
+                                <li>
+                                    <a asp-controller="Product" asp-action="Index" class="dropdown-item">
+                                        View all
+                                    </a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Product" asp-action="IndexPaging" class="dropdown-item">
+                                        View all paged
+                                    </a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Product" asp-action="IndexPagingSorting" class="dropdown-item">
+                                        View all paged and sorted
+                                    </a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Product" asp-action="Search" class="dropdown-item">
+                                        Search product
+                                    </a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Product" asp-action="Add" class="dropdown-item">
+                                        Add new product
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle"
+                               data-toggle="dropdown"
+                               href="#"
+                               role="button"
+                               data-bs-toggle="dropdown"
+                               id="nav-dropdown"
+                               aria-expanded="false">
+                                Categories
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="nav-dropdown">
+                                <li>
+                                    <a asp-controller="Category" asp-action="Index" class="dropdown-item">
+                                        View all
+                                    </a>
+                                </li>
+                                <li>
+                                    <a asp-controller="Category" asp-action="BulkEdit" class="dropdown-item">
+                                        Bulk edit
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+
+                        <li class="nav-item">
+                            <a asp-controller="Order" asp-action="Index" class="nav-link">
+                                Orders
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
