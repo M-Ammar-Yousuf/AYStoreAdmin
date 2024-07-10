@@ -1,0 +1,37 @@
+﻿@model ProductViewModel
+<h2>Products</h2>
+<hr />
+
+@if (!Model.Products.Any())
+{
+    <tr><td colspan="3" class="text-center">No products at this point</td></tr>
+}
+else
+{
+    <table class="table table-condensed table-bordered">
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Price
+            </th>
+            <th>Actions</th>
+        </tr>
+        @foreach (var product in Model.Products)
+        {
+
+            <tr>
+                <td>@product.ProductId</td>
+                <td>@product.Name</td>
+                <td>@product.Price</td>
+                <td>
+                    <a asp-action="Details" asp-route-productId="@product.ProductId">Details</a>
+                </td>
+            </tr>
+        }
+    </table>
+}

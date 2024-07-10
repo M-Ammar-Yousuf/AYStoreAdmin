@@ -1,4 +1,5 @@
 using AYStoreAdmin.Models;
+using AYStoreAdmin.Models.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +9,10 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<AYStoreDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("AYStoreDbContextConnection")));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 
 var app = builder.Build();
 
