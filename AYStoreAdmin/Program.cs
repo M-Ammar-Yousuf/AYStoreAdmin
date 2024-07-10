@@ -24,6 +24,13 @@ else
     app.UseMigrationsEndPoint();
 }
 
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var context = services.GetRequiredService<AYStoreDbContext>();
+    DbInitializer.Seed(context);
+}
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
